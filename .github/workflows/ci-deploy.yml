@@ -8,8 +8,6 @@ on:
 
 env:
   DOCKER_REGISTRY: ghcr.io
-  BACKEND_IMAGE: ${{ lower(github.repository) }}-backend
-  FRONTEND_IMAGE: ${{ lower(github.repository) }}-frontend
 
 jobs:
   test:
@@ -62,6 +60,13 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set lowercase image names
+        run: |
+          REPO="${{ github.repository }}"
+          REPO_LOWER=$(echo "$REPO" | tr '[:upper:]' '[:lower:]')
+          echo "BACKEND_IMAGE=${REPO_LOWER}-backend" >> $GITHUB_ENV
+          echo "FRONTEND_IMAGE=${REPO_LOWER}-frontend" >> $GITHUB_ENV
 
       - name: Login to Container Registry
         uses: docker/login-action@v2
