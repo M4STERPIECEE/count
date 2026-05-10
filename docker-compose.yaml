@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: budget-db
+    environment:
+      POSTGRES_DB: budgetdb
+      POSTGRES_USER: budgetuser
+      POSTGRES_PASSWORD: budgetpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - budget-network
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: budget-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/budgetdb
+      SPRING_DATASOURCE_USERNAME: budgetuser
+      SPRING_DATASOURCE_PASSWORD: budgetpass
+    ports:
+      - "7070:7070"
+    depends_on:
+      - postgres
+    networks:
+      - budget-network
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: budget-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - budget-network
+
+volumes:
+  postgres_data:
+
+networks:
+  budget-network:
+    driver: bridge
