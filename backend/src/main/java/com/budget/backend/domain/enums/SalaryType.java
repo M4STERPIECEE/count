@@ -1,4 +1,4 @@
-package com.budget.backend.domain.model;
+package com.budget.backend.domain.enums;
 
 public enum SalaryType {
     MONTHLY,

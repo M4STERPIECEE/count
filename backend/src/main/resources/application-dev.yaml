@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/budgetdb
+    url: jdbc:postgresql://localhost:5400/budgetdb
     username: budgetuser
     password: budgetpass
     driver-class-name: org.postgresql.Driver
@@ -12,12 +12,6 @@ spring:
 
   jpa:
     show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-
-server:
-  port: 8080
 
 logging:
   level:
