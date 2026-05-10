@@ -8,8 +8,8 @@ on:
 
 env:
   DOCKER_REGISTRY: ghcr.io
-  BACKEND_IMAGE: ${{ github.repository }}-backend
-  FRONTEND_IMAGE: ${{ github.repository }}-frontend
+  BACKEND_IMAGE: ${{ lower(github.repository) }}-backend
+  FRONTEND_IMAGE: ${{ lower(github.repository) }}-frontend
 
 jobs:
   test:
