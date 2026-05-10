@@ -2,6 +2,7 @@ package com.budget.backend.domain.model;
 
 import com.budget.backend.domain.exception.InvalidAmountException;
 import com.budget.backend.domain.exception.InvalidRevenueException;
+import com.budget.backend.domain.enums.RevenueType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

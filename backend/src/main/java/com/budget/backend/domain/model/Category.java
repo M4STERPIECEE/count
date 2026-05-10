@@ -1,6 +1,7 @@
 package com.budget.backend.domain.model;
 
 import com.budget.backend.domain.exception.InvalidCategoryException;
+import com.budget.backend.domain.enums.CategoryType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
