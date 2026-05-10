@@ -25,14 +25,14 @@ jobs:
         if: matrix.service == 'backend'
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
 
       - name: Setup Node.js (Frontend)
         if: matrix.service == 'frontend'
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22'
 
       - name: Cache Gradle packages
         if: matrix.service == 'backend'
@@ -97,5 +97,3 @@ jobs:
       - name: Deploy to Production
         run: |
           echo "Deploying to production server..."
-          # Ajouter vos commandes de déploiement ici
-          # Exemple: SSH into server and update containers
