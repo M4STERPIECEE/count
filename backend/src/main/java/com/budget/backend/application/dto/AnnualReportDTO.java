@@ -16,7 +16,7 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "DTO pour le rapport annuel")
+@Schema(description = "DTO for annual report")
 public class AnnualReportDTO {
 
     private int year;

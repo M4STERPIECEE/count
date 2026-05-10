@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,42 +20,20 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "DTO pour les revenus")
+@Schema(description = "DTO for revenues")
 public class RevenueDTO {
 
-    @Schema(description = "ID unique du revenu", example = "123e4567-e89b-12d3-a456-426614174000")
-    private UUID id;
-
-    @NotNull(message = "Le montant est obligatoire")
-    @DecimalMin(value = "0.01", message = "Le montant doit être supérieur à 0")
-    @Schema(description = "Montant du revenu", example = "5000.00", minimum = "0.01")
-    private BigDecimal amount;
-
-    @NotBlank(message = "La source est obligatoire")
-    @Size(max = 200, message = "La source ne doit pas dépasser 200 caractères")
-    @Schema(description = "Source du revenu", example = "Salaire entreprise XYZ")
-    private String source;
-
-    @NotNull(message = "La date est obligatoire")
-    @PastOrPresent(message = "La date ne peut pas être dans le futur")
-    @Schema(description = "Date du revenu", example = "2024-01-15")
-    private LocalDate date;
-
-    @NotNull(message = "La catégorie est obligatoire")
-    @Schema(description = "ID de la catégorie")
-    private UUID categoryId;
-
-    @Size(max = 1000, message = "La description ne doit pas dépasser 1000 caractères")
-    @Schema(description = "Description du revenu", example = "Salaire mensuel janvier 2024")
-    private String description;
-
-    @NotNull(message = "Le type de revenu est obligatoire")
-    @Schema(description = "Type de revenu", example = "RECURRING")
-    private RevenueType type;
-
-    @Schema(description = "Date de création")
-    private LocalDateTime createdAt;
-
-    @Schema(description = "Date de dernière modification")
-    private LocalDateTime updatedAt;
+    @Schema(description = "Unique revenue ID", example = "123e4567-e89b-12d3-a456-426614174000") private UUID id;
+    @NotNull(message = "Amount is required")
+    @DecimalMin(value = "0.01", message = "Amount must be greater than 0")
+    @Schema(description = "Revenue amount", example = "5000.00", minimum = "0.01") private BigDecimal amount;
+    @NotBlank(message = "Source is required") @Size(max = 200, message = "Source must not exceed 200 characters") @Schema(description = "Revenue source", example = "Company XYZ salary") private String source;
+    @NotNull(message = "Date is required") @PastOrPresent(message = "Date cannot be in the future") @Schema(description = "Revenue date", example = "2024-01-15") private LocalDate date;
+    @NotNull(message = "Category is required") @Schema(description = "Category ID") private UUID categoryId;
+    @Size(max = 1000, message = "Description must not exceed 1000 characters")
+    @Schema(description = "Revenue description", example = "Monthly salary January 2024") private String description;
+    @NotNull(message = "Revenue type is required")
+    @Schema(description = "Revenue type") private RevenueType type;
+    @Schema(description = "Creation date") private LocalDateTime createdAt;
+    @Schema(description = "Last update date") private LocalDateTime updatedAt;
 }

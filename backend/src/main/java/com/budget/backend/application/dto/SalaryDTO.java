@@ -20,43 +20,43 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "DTO pour les salaires")
+@Schema(description = "DTO for salaries")
 public class SalaryDTO {
 
-    @Schema(description = "ID unique du salaire")
+    @Schema(description = "Unique salary ID")
     private UUID id;
 
-    @NotNull(message = "Le montant est obligatoire")
-    @DecimalMin(value = "0.01", message = "Le montant doit être supérieur à 0")
-    @Schema(description = "Montant du salaire", example = "4500.00")
+    @NotNull(message = "Amount is required")
+    @DecimalMin(value = "0.01", message = "Amount must be greater than 0")
+    @Schema(description = "Salary amount", example = "4500.00")
     private BigDecimal amount;
 
-    @NotNull(message = "Le mois est obligatoire")
-    @Min(value = 1, message = "Le mois doit être entre 1 et 12")
-    @Max(value = 12, message = "Le mois doit être entre 1 et 12")
-    @Schema(description = "Mois du salaire", example = "1", minimum = "1", maximum = "12")
+    @NotNull(message = "Month is required")
+    @Min(value = 1, message = "Month must be between 1 and 12")
+    @Max(value = 12, message = "Month must be between 1 and 12")
+    @Schema(description = "Salary month", example = "1", minimum = "1", maximum = "12")
     private int month;
 
-    @NotNull(message = "L'année est obligatoire")
-    @Min(value = 2000, message = "L'année doit être valide")
-    @Schema(description = "Année du salaire", example = "2024")
+    @NotNull(message = "Year is required")
+    @Min(value = 2000, message = "Year must be valid")
+    @Schema(description = "Salary year", example = "2024")
     private int year;
 
-    @Size(max = 200, message = "Le nom de l'employeur ne doit pas dépasser 200 caractères")
-    @Schema(description = "Nom de l'employeur", example = "Entreprise ABC")
+    @Size(max = 200, message = "Employer name must not exceed 200 characters")
+    @Schema(description = "Employer name", example = "ABC Company")
     private String employer;
 
-    @Size(max = 500, message = "La description ne doit pas dépasser 500 caractères")
-    @Schema(description = "Description du salaire")
+    @Size(max = 500, message = "Description must not exceed 500 characters")
+    @Schema(description = "Salary description")
     private String description;
 
-    @NotNull(message = "Le type de salaire est obligatoire")
-    @Schema(description = "Type de salaire", example = "MONTHLY")
+    @NotNull(message = "Salary type is required")
+    @Schema(description = "Salary type", example = "MONTHLY")
     private SalaryType type;
 
-    @Schema(description = "Date de création")
+    @Schema(description = "Creation date")
     private LocalDateTime createdAt;
 
-    @Schema(description = "Date de dernière modification")
+    @Schema(description = "Last update date")
     private LocalDateTime updatedAt;
 }
