@@ -34,18 +34,18 @@ public class SalaryController {
     @GetMapping("/total/{year}")
     @Operation(summary = "Calculer le total des salaires pour une année")
     public ResponseEntity<BigDecimal> getTotalSalary(@PathVariable int year) {
-        return ResponseEntity.ok(BigDecimal.ZERO);
+        return ResponseEntity.ok(salaryUseCase.calculateTotalSalary(year));
     }
 
     @GetMapping("/average/{year}")
     @Operation(summary = "Calculer la moyenne des salaires pour une année")
     public ResponseEntity<BigDecimal> getAverageSalary(@PathVariable int year) {
-        return ResponseEntity.ok(BigDecimal.ZERO);
+        return ResponseEntity.ok(salaryUseCase.calculateAverageSalary(year));
     }
 
     @GetMapping("/projection/{year}")
     @Operation(summary = "Projeter le salaire annuel")
     public ResponseEntity<BigDecimal> getProjectedAnnualSalary(@PathVariable int year) {
-        return ResponseEntity.ok(BigDecimal.ZERO);
+        return ResponseEntity.ok(salaryUseCase.projectAnnualSalary(year));
     }
 }

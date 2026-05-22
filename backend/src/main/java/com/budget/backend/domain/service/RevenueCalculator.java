@@ -1,6 +1,7 @@
 package com.budget.backend.domain.service;
 
 import com.budget.backend.domain.model.Revenue;
+import com.budget.backend.domain.model.Salary;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -68,5 +69,26 @@ public class RevenueCalculator {
         return currentTotal.subtract(previousTotal)
                 .multiply(BigDecimal.valueOf(100))
                 .divide(previousTotal, 2, RoundingMode.HALF_UP);
+    }
+
+    public BigDecimal calculateTotalSalary(List<Salary> salaries) {
+        return salaries.stream()
+                .map(Salary::getAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal calculateAverageSalary(List<Salary> salaries) {
+        if (salaries.isEmpty()) {
+            return BigDecimal.ZERO;
+        }
+
+        return calculateTotalSalary(salaries)
+                .divide(BigDecimal.valueOf(salaries.size()), 2, RoundingMode.HALF_UP);
+    }
+
+    public BigDecimal projectAnnualSalary(List<Salary> salaries) {
+        return salaries.stream()
+                .map(Salary::getAnnualAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
