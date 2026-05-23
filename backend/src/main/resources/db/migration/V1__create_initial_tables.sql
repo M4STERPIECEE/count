@@ -1,8 +1,6 @@
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
 -- Table des catégories
 CREATE TABLE categories (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
     type VARCHAR(20) NOT NULL,
     description VARCHAR(500),
@@ -14,7 +12,7 @@ CREATE INDEX idx_categories_type ON categories(type);
 
 -- Table des revenus
 CREATE TABLE revenues (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY,
     amount DECIMAL(15,2) NOT NULL CHECK (amount > 0),
     source VARCHAR(200) NOT NULL,
     date DATE NOT NULL,
@@ -36,7 +34,7 @@ CREATE INDEX idx_revenues_year_month ON revenues(
 
 -- Table des salaires
 CREATE TABLE salaries (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY,
     amount DECIMAL(15,2) NOT NULL CHECK (amount > 0),
     month INTEGER NOT NULL CHECK (month >= 1 AND month <= 12),
     year INTEGER NOT NULL CHECK (year >= 2000),

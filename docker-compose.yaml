@@ -23,6 +23,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: budget-backend
+    restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
       SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
