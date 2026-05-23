@@ -10,8 +10,14 @@ services:
       - "${POSTGRES_PORT}:5400"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
       - budget-network
+
   backend:
     build:
       context: ./backend
@@ -25,9 +31,11 @@ services:
     ports:
       - "7070:7070"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy 
     networks:
       - budget-network
+
   frontend:
     build:
       context: ./frontend
