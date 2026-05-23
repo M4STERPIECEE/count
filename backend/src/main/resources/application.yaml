@@ -1,20 +1,11 @@
-# yaml-language-server: $schema=https://json.schemastore.org/spring-boot-properties-3.0.json
+ # yaml-language-server: $schema=https://www.schemastore.org/any.json
 spring:
   application:
     name: budget-app
   
   profiles:
     active: dev
-  
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-    show-sql: false
-  
+
   flyway:
     enabled: true
     baseline-on-migrate: true
@@ -33,9 +24,6 @@ management:
       show-details: always
 
 logging:
-  level:
-    com.budgetapp: DEBUG
-    org.springframework.security: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 

@@ -11,8 +11,15 @@ spring:
       connection-timeout: 20000
 
   jpa:
-    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true 
 
 logging:
   level:
     com.budgetapp: TRACE
+    org.springframework.security: INFO

@@ -3,7 +3,6 @@ package com.budget.backend.domain.service;
 import com.budget.backend.domain.model.Revenue;
 import com.budget.backend.domain.model.Salary;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -42,15 +41,7 @@ public class RevenueCalculator {
     }
 
     public Map<Integer, BigDecimal> calculateMonthlyBreakdown(List<Revenue> revenues, int year) {
-        return revenues.stream()
-                .filter(r -> r.getDate().getYear() == year)
-                .collect(Collectors.groupingBy(
-                        r -> r.getDate().getMonthValue(),
-                        Collectors.mapping(
-                                Revenue::getAmount,
-                                Collectors.reducing(BigDecimal.ZERO, BigDecimal::add)
-                        )
-                ));
+        return revenues.stream().filter(r -> r.getDate().getYear() == year).collect(Collectors.groupingBy( r -> r.getDate().getMonthValue(), Collectors.mapping(Revenue::getAmount,Collectors.reducing(BigDecimal.ZERO, BigDecimal::add))));
     }
 
     public List<Revenue> getTopRevenues(List<Revenue> revenues, int limit) {
@@ -89,8 +80,6 @@ public class RevenueCalculator {
     }
 
     public BigDecimal projectAnnualSalary(List<Salary> salaries) {
-        return salaries.stream()
-                .map(Salary::getAnnualAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        return salaries.stream().map(Salary::getAnnualAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
