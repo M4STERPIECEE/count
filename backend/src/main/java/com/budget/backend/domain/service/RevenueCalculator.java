@@ -2,6 +2,7 @@ package com.budget.backend.domain.service;
 
 import com.budget.backend.domain.model.Revenue;
 import com.budget.backend.domain.model.Salary;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Service
 public class RevenueCalculator {
 
     public BigDecimal calculateTotal(List<Revenue> revenues) {

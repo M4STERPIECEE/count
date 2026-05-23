@@ -2,6 +2,7 @@ package com.budget.backend.infrastructure.web.controller;
 
 import com.budget.backend.application.dto.RevenueDTO;
 import com.budget.backend.application.port.input.RevenueServicePort;
+import com.budget.backend.shared.constant.AppConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/revenues")
+@RequestMapping(AppConstants.API_V1_PATH + "/revenues")
 @RequiredArgsConstructor
 @Tag(name = "Revenues", description = "API de gestion des revenus")
 public class RevenueController {
