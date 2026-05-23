@@ -2,7 +2,6 @@ package com.budget.backend.infrastructure.web.controller;
 
 import com.budget.backend.application.dto.SalaryDTO;
 import com.budget.backend.application.usecase.TrackMonthlySalaryUseCase;
-import com.budget.backend.shared.constant.AppConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.math.BigDecimal;
 
 @RestController
-@RequestMapping(AppConstants.API_V1_PATH + "/salaries")
+@RequestMapping("${version.path}/salaries")
 @RequiredArgsConstructor
 @Tag(name = "Salaries", description = "API de gestion des salaires")
 public class SalaryController {
