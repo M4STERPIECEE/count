@@ -88,4 +88,19 @@ public class Revenue {
     public boolean isOneTime() {
         return type == RevenueType.ONE_TIME;
     }
+
+    public Revenue update(BigDecimal amount, String source, LocalDate date,
+                          Category category, String description, RevenueType type) {
+        return Revenue.builder()
+                .id(this.id)
+                .amount(amount)
+                .source(source)
+                .date(date)
+                .category(category)
+                .description(description)
+                .type(type)
+                .createdAt(this.createdAt)
+                .updatedAt(LocalDateTime.now())
+                .build();
+    }
 }

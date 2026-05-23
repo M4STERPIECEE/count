@@ -17,7 +17,11 @@ import java.util.stream.Collectors;
 @Service
 public class AnnualReportGenerator {
 
-    private final RevenueCalculator revenueCalculator = new RevenueCalculator();
+    private final RevenueCalculator revenueCalculator;
+
+    public AnnualReportGenerator(RevenueCalculator revenueCalculator) {
+        this.revenueCalculator = revenueCalculator;
+    }
 
     public AnnualReport generate(int year, List<Revenue> revenues, List<Salary> salaries) {
         BigDecimal totalRevenue = revenueCalculator.calculateTotalByYear(revenues, year);
