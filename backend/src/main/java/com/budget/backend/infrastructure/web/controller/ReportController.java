@@ -2,7 +2,6 @@ package com.budget.backend.infrastructure.web.controller;
 
 import com.budget.backend.application.dto.AnnualReportDTO;
 import com.budget.backend.application.port.input.ReportServicePort;
-import com.budget.backend.shared.constant.AppConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping(AppConstants.API_V1_PATH + "/reports")
+@RequestMapping("${version.path}/reports")
 @RequiredArgsConstructor
 @Tag(name = "Rapports", description = "API de génération de rapports financiers")
 @CrossOrigin(origins = "*", maxAge = 3600)
