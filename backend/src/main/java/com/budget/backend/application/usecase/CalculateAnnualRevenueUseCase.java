@@ -1,9 +1,7 @@
 package com.budget.backend.application.usecase;
 
-import com.budget.backend.application.dto.SalaryDTO;
 import com.budget.backend.application.port.output.RevenueRepositoryPort;
 import com.budget.backend.domain.model.Revenue;
-import com.budget.backend.domain.model.Salary;
 import com.budget.backend.domain.service.RevenueCalculator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

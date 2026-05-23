@@ -2,27 +2,24 @@ package com.budget.backend.infrastructure.web.controller;
 
 import com.budget.backend.application.dto.SalaryDTO;
 import com.budget.backend.application.usecase.TrackMonthlySalaryUseCase;
+import com.budget.backend.shared.constant.AppConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.UUID;
 
 @RestController
-@RequestMapping("/salaries")
+@RequestMapping(AppConstants.API_V1_PATH + "/salaries")
 @RequiredArgsConstructor
 @Tag(name = "Salaries", description = "API de gestion des salaires")
 public class SalaryController {
@@ -38,18 +35,18 @@ public class SalaryController {
     @GetMapping("/total/{year}")
     @Operation(summary = "Calculer le total des salaires pour une année")
     public ResponseEntity<BigDecimal> getTotalSalary(@PathVariable int year) {
-        return ResponseEntity.ok(BigDecimal.ZERO);
+        return ResponseEntity.ok(salaryUseCase.calculateTotalSalary(year));
     }
 
     @GetMapping("/average/{year}")
     @Operation(summary = "Calculer la moyenne des salaires pour une année")
     public ResponseEntity<BigDecimal> getAverageSalary(@PathVariable int year) {
-        return ResponseEntity.ok(BigDecimal.ZERO);
+        return ResponseEntity.ok(salaryUseCase.calculateAverageSalary(year));
     }
 
     @GetMapping("/projection/{year}")
     @Operation(summary = "Projeter le salaire annuel")
     public ResponseEntity<BigDecimal> getProjectedAnnualSalary(@PathVariable int year) {
-        return ResponseEntity.ok(BigDecimal.ZERO);
+        return ResponseEntity.ok(salaryUseCase.projectAnnualSalary(year));
     }
 }

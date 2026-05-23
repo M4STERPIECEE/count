@@ -1,6 +1,5 @@
 package com.budget.backend.application.dto;
 
-import com.budget.backend.domain.model.AnnualReport;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

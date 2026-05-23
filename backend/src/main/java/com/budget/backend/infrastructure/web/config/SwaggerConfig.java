@@ -7,7 +7,6 @@ import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import java.util.List;
 
 @Configuration
@@ -19,15 +18,15 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("Budget App API")
                         .version("1.0.0")
-                        .description("API de gestion de budget personnel - Architecture Clean")
+                        .description("API de gestion de budget personnel")
                         .contact(new Contact()
-                                .name("Budget App Team")
+                                .name("Budget App")
                                 .email("contact@budgetapp.com"))
                         .license(new License()
                                 .name("Apache 2.0")
                                 .url("https://www.apache.org/licenses/LICENSE-2.0")))
                 .servers(List.of(
-                        new Server().url("http://localhost:7070/api/v1").description("Serveur de développement")
+                        new Server().url("http://localhost:7070").description("Serveur de développement")
                 ));
     }
 }
