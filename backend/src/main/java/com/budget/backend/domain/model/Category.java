@@ -21,15 +21,18 @@ public class Category {
     private final String description;
     private final String icon;
     private final LocalDateTime createdAt;
+    private final LocalDateTime updatedAt;
 
     public static Category create(String name, CategoryType type, String description, String icon) {
+        LocalDateTime now = LocalDateTime.now();
         Category category = Category.builder()
                 .id(UUID.randomUUID())
                 .name(name)
                 .type(type)
                 .description(description)
                 .icon(icon)
-                .createdAt(LocalDateTime.now())
+                .createdAt(now)
+                .updatedAt(now)
                 .build();
 
         category.validate();

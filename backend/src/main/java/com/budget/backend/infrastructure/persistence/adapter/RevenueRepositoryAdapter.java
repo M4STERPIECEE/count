@@ -19,12 +19,12 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-@Transactional
 public class RevenueRepositoryAdapter implements RevenueRepositoryPort {
     
     private final JpaRevenueRepository jpaRevenueRepository;
     
     @Override
+    @Transactional
     public Revenue save(Revenue revenue) {
         RevenueEntity entity = mapToEntity(revenue);
         RevenueEntity savedEntity = jpaRevenueRepository.save(entity);
@@ -66,6 +66,7 @@ public class RevenueRepositoryAdapter implements RevenueRepositoryPort {
     }
     
     @Override
+    @Transactional
     public void deleteById(UUID id) {
         jpaRevenueRepository.deleteById(id);
     }
@@ -86,6 +87,7 @@ public class RevenueRepositoryAdapter implements RevenueRepositoryPort {
                 .type(revenue.getCategory().getType())
                 .description(revenue.getCategory().getDescription())
                 .icon(revenue.getCategory().getIcon())
+                .createdAt(revenue.getCategory().getCreatedAt())
                 .build();
         
         return RevenueEntity.builder()
@@ -113,6 +115,7 @@ public class RevenueRepositoryAdapter implements RevenueRepositoryPort {
                 .description(entity.getCategory().getDescription())
                 .icon(entity.getCategory().getIcon())
                 .createdAt(entity.getCategory().getCreatedAt())
+                .updatedAt(entity.getCategory().getUpdatedAt())
                 .build();
         
         return Revenue.builder()
