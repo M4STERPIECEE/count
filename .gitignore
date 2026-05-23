@@ -1,3 +1,49 @@
+```
+# Java/Gradle
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.hprof
+*.dump
+*.pid
+*.log
+!*.gradle
+.gradle/
+build/
+target/
+out/
+
+# Dependencies
+lib/
+libs/
+
+# IDE
 .idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+.externalToolBuilders/
+*.launch
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+.directory
+*.orig
+
+# Logs
+*.log
+
+# Environment
 .env
-.env.*
+.env.local
+*.env
+```

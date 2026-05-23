@@ -56,17 +56,14 @@ public class ManageRevenueUseCase implements RevenueServicePort {
         Revenue existingRevenue = revenueRepository.findById(id)
                 .orElseThrow(() -> new RevenueNotFoundException(id));
 
-        Revenue updatedRevenue = Revenue.builder()
-                .id(existingRevenue.getId())
-                .amount(revenueDTO.getAmount())
-                .source(revenueDTO.getSource())
-                .date(revenueDTO.getDate())
-                .category(revenueMapper.categoryFromId(revenueDTO.getCategoryId()))
-                .description(revenueDTO.getDescription())
-                .type(revenueDTO.getType())
-                .createdAt(existingRevenue.getCreatedAt())
-                .updatedAt(java.time.LocalDateTime.now())
-                .build();
+        Revenue updatedRevenue = existingRevenue.update(
+                revenueDTO.getAmount(),
+                revenueDTO.getSource(),
+                revenueDTO.getDate(),
+                revenueMapper.categoryFromId(revenueDTO.getCategoryId()),
+                revenueDTO.getDescription(),
+                revenueDTO.getType()
+        );
         updatedRevenue.validate();
 
         Revenue savedRevenue = revenueRepository.save(updatedRevenue);
